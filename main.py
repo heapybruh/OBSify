@@ -1,10 +1,10 @@
 import requests
+import config
 
 
 # Get ACCESS_TOKEN (OAuth Token) at https://developer.spotify.com/console/get-users-currently-playing-track
 SPOTIFY_GET_CURRENT_TRACK_URL = 'https://api.spotify.com/v1/me/player/currently-playing'
-ACCESS_TOKEN = 'YOUR_ACCESS_TOKEN'
-
+ACCESS_TOKEN = config.ACCESS_TOKEN
 
 def get_current_track(access_token):
     response = requests.get(
@@ -24,23 +24,27 @@ def get_current_track(access_token):
     artist_names = ', '.join([artist['name'] for artist in artists])
 
     current_track_info = {
-    	"id": track_id,
-    	"track_name": track_name,
-    	"artists": artist_names,
-    	"link": link
+        "id": track_id,
+        "track_name": track_name,
+        "artists": artist_names,
+        "link": link
     }
 
     return current_track_info
 
 
 def main():
-	current_track_id = None
-	while True:
-	    current_track_info = get_current_track(ACCESS_TOKEN)
+    current_track_id = None
+    while True:
+        current_track_info = get_current_track(ACCESS_TOKEN)
 
-	    if current_track_info['id'] != current_track_id:
-		    print(f"Now Playing: \"{current_track_info['song_name']}\" by {current_track_info['artist']}")
-		    current_track_id = current_track_info['id']
+        if current_track_info['id'] != current_track_id:
+            now_playing = f"Now Playing: \"{current_track_info['track_name']}\" by {current_track_info['artists']}"
+            print(now_playing)
+            text_file = open('now_playing.txt', 'w', encoding="utf-8")
+            text_file.write(now_playing)
+            text_file.close()
+            current_track_id = current_track_info['id']
 
 
 if __name__ == '__main__':
