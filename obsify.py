@@ -1,6 +1,5 @@
 import spotipy
 from spotipy.oauth2 import SpotifyOAuth
-from threading import Thread
 from pathlib import Path
 from getpass import getpass
 import os
