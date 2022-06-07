@@ -1,9 +1,16 @@
 import http.server
 import socketserver
 import os
+import json
+
+config_json = open("webserver_config.json", "r", encoding="utf-8")
+config = json.loads(config_json.read())
 
 IP = "localhost"
-PORT = 8000
+if isinstance(config["Port"], int) == "False":
+    PORT = 8000
+else:
+    PORT = config["Port"]
 DIRECTORY = f"{os.getcwd()}/html"
 
 class Handler(http.server.SimpleHTTPRequestHandler):
