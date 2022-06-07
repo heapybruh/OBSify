@@ -1,0 +1,46 @@
+body {
+  background-color: black;
+
+  font-family: "Segoe UI";
+  font-weight: bold;
+  text-align: left;
+}
+
+.background {
+  background-color: rgb(35, 35, 35);
+  color: white;
+  min-width: 300px;
+  width: 300px;
+  min-width: 85px;
+  height: 85px;
+
+  border: none;
+  border-radius: 16px;
+
+  padding: 10px;
+  margin: 10px 10px;
+  
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+
+#now_playing {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#song_name {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#artist_list {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

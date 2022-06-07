@@ -1,0 +1,5 @@
+{
+    "client_ID" : "YOUR_CLIENT_ID",
+    "client_SECRET" : "YOUR_CLIENT_SECRET",
+    "redirect_url" : "YOUR_REDIRECT_URL"
+}

@@ -1,0 +1,68 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="css.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  </head>
+
+  <body>
+    <div class="background">
+      <div id="now_playing">
+        Welcome to OBSify!
+      </div>
+
+      <div id="song_name" style="font-size: 32px">
+        Loading...
+      </div>
+
+      <div id="artist_list">
+        Made by heapy
+      </div>
+    </div>
+
+    <script>
+    var song_id = null
+    var now_playing = null
+
+    fetch("webserver_config.json").then(response => response.json()).then(data => {
+      console.log(data.LightMode.toLowerCase())
+      if (data.LightMode.toLowerCase() == "true") {
+        var color = $(".background").css("color")
+        var rgba = color.replace(/[^,]+(?=\))/)
+        $(".background").css('background-color', "white");
+        $(".background").css('color', "rgb(35, 35, 35)");
+      }
+    })
+
+    function loop() {
+      setTimeout(function() {
+      fetch("now_playing.json").then(response => response.json()).then(data => {
+        if (now_playing == null) {
+          now_playing = "not null anymore lol"
+          $("#now_playing").fadeOut(500);
+          setTimeout(function() {
+            document.getElementById("now_playing").innerHTML = "Now playing:"
+          }, 1000);
+          $("#now_playing").delay(500).fadeIn();
+        }
+
+        if (song_id !== data.song_id) {
+          song_id = data.song_id
+          console.log("Changed HTML code")
+          $("#song_name").fadeOut(500);
+          $("#artist_list").fadeOut(500);
+          setTimeout(function() {
+            document.getElementById("song_name").innerHTML =  data.song_name
+            document.getElementById("artist_list").innerHTML = "by " + data.artist_list            
+          }, 1000);
+          $("#song_name").delay(500).fadeIn();
+          $("#artist_list").delay(500).fadeIn();
+        }
+      })
+
+      loop()
+    }, 1000)}
+
+    loop()
+    </script>
+  </body>
+</html>
