@@ -18,4 +18,7 @@ OBSify is a Python App that hosts HTML Website (only on localhost IP) with Spoti
 12. URL should be **http://localhost:8000** (Replace 8000 with the port that you set in **webserver_config.json**)
 13. (Optional) Scroll down and enable **Shutdown source when not visible** and **Refresh browser when scene becomes ative**
 
+## How does it look like?
+![OBSifyScreenshot](https://i.imgur.com/t2gSTjt.png)
+
 Special thanks to [imdadahad](https://github.com/imdadahad) for creating [spotify-get-current-playing-track](https://github.com/imdadahad/spotify-get-current-playing-track) that is OBSify based on.
