@@ -26,7 +26,6 @@
     var now_playing = null
 
     fetch("webserver_config.json").then(response => response.json()).then(data => {
-      console.log(data.LightMode)
       if (data.LightMode.toLowerCase() == "true") {
         $(".background").css("background-color", "white");
         $(".background").css("color", "rgb(35, 35, 35)");
