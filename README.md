@@ -16,7 +16,7 @@ OBSify is a Python App that hosts HTML Website (only on localhost IP) with Spoti
 10. Open OBS Studio
 11. Add **Browser Source** to scene
 12. URL should be **http://localhost:8000** (Replace 8000 with the port that you set in **webserver_config.json**)
-13. (Optional) Scroll down and enable **Shutdown source when not visible** and **Refresh browser when scene becomes ative**
+13. (Optional) Scroll down and enable **Shutdown source when not visible** and **Refresh browser when scene becomes active**
 
 ## How does it look like?
 ![OBSifyScreenshot](https://i.imgur.com/t2gSTjt.png)
