@@ -37,21 +37,3 @@ body {
   margin: 0;
   border-radius: 32px;
 }
-
-#now_playing {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-#song_name {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-#artist_list {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}

@@ -9,7 +9,7 @@ config = json.loads(config_json.read())
 IP = "localhost"
 if isinstance(config["Port"], int) == "False":
     PORT = 8000
-elif isinstance(config["Port"], int) == "True":
+else:
     PORT = int(config["Port"])
 
 DIRECTORY = f"{os.getcwd()}/html"
