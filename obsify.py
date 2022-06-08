@@ -36,6 +36,7 @@ while True:
 
     song_name = track_info["item"]["name"]
     song_id = track_info["item"]["id"]
+    song_image = track_info["item"]["album"]["images"][0]["url"]
     artists = track_info["item"]["artists"]
 
     if current_song_id != song_id:
@@ -51,6 +52,7 @@ while True:
         data = {
             "song_name" : f"{song_name}",
             "song_id" : f"{song_id}",
+            "song_image" : f"{song_image}",
             "artist_list" : f"{artist_list}"
         }
 
