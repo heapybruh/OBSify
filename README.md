@@ -20,5 +20,3 @@ OBSify is a Python App that hosts HTML Website (only on localhost IP) with Spoti
 
 ## How does it look like?
 ![OBSifyScreenshot](https://i.imgur.com/t2gSTjt.png)
-
-Special thanks to [imdadahad](https://github.com/imdadahad) for creating [spotify-get-current-playing-track](https://github.com/imdadahad/spotify-get-current-playing-track) that is OBSify based on.
