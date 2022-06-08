@@ -12,7 +12,7 @@ OBSify is a Python App that hosts HTML Website (only on localhost IP) with Spoti
 6. Copy **Redirect URL**, **Client ID** and **Client Secret**
 7. Paste them into **config.json**
 8. Open **start.bat**
-9. A website should open with the Spotify Authorization, agree to it
+9. A website should open with the Spotify Authorization, accept it
 10. Open OBS Studio
 11. Add **Browser Source** to scene
 12. URL should be **http://localhost:8000** (Replace 8000 with the port that you set in **webserver_config.json**)
