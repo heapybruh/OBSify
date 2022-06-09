@@ -1,2 +1,2 @@
 @echo off
-start python obsify.py
+python obsify.py
