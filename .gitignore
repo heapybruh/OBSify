@@ -1,6 +1,4 @@
-
+.gitgnore
 test.txt
 .cache
-config.json
-html/now_playing.json
-config.json
+*.json
