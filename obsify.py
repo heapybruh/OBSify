@@ -5,9 +5,18 @@ from getpass import getpass
 import os
 import time
 import json
+import atexit
 
 config_json = open("config.json", "r", encoding="utf-8")
 config = json.loads(config_json.read())
+
+def at_exit():
+    try:
+        os.remove("html/now_playing.json")
+    except:
+        pass
+
+atexit.register(at_exit)
 
 clear = lambda: os.system("cls")
 clear()
