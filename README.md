@@ -15,7 +15,7 @@ OBSify is a Python App that hosts HTML Website (only on localhost IP) with Spoti
 9. A website should open with the Spotify Authorization, accept it
 10. Open OBS Studio
 11. Add **Browser Source** to scene
-12. Check **local file** and use **index.html** which is in **html** folder
+12. Check **local file** and use **index.html** which is in [html folder](https://github.com/Heapy1337/OBSify/tree/main/html)
 14. (Optional) Scroll down and enable **Shutdown source when not visible** and **Refresh browser when scene becomes active**
 
 ## How does it look like?
