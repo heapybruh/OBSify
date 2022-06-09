@@ -25,7 +25,7 @@
     var song_id = null
     var now_playing = null
 
-    fetch("webserver_config.json").then(response => response.json()).then(data => {
+    fetch("widget_config.json").then(response => response.json()).then(data => {
       if (data.LightMode.toLowerCase() == "true") {
         $(".background").css("background-color", "white");
         $(".background").css("color", "rgb(35, 35, 35)");
