@@ -1,33 +1,61 @@
 import spotipy
 from spotipy.oauth2 import SpotifyOAuth
+
 from pathlib import Path
 from getpass import getpass
+
 import os
 import time
 import json
-
-config_json = open("config.json", "r", encoding="utf-8")
-config = json.loads(config_json.read())
+import cursor
 
 clear = lambda: os.system("cls")
 clear()
+
+cursor.hide()
+
+class colors:
+    green = '\033[92m'
+    red = '\033[91m'
+    reset = '\033[0m'
+
+def obsify_print(message):
+    print(f"[ OBSify ] {message}" + colors.reset)
+
+obsify_print("Loading config.json...")
+try:
+    config_json = open("config.json", "r", encoding="utf-8")
+    config = json.loads(config_json.read())
+    obsify_print(colors.green + "Loaded config.json successfully")
+except:
+    obsify_print(colors.red + "An error has occurred while loading config.json")
 
 create_file = Path("html/now_playing.json")
 create_file.touch(exist_ok=True)
 
 scope = "user-read-currently-playing"
 
-sp = spotipy.Spotify(auth_manager=SpotifyOAuth(
-                                            client_id=config["client_ID"],
-                                            client_secret=config["client_SECRET"],
-                                            redirect_uri=config["redirect_url"],
-                                            scope=scope,
-                                            open_browser=True
-                                            ))
+obsify_print("Logging in...")
+try:
+    sp = spotipy.Spotify(auth_manager=SpotifyOAuth(
+                                                client_id=config["client_ID"],
+                                                client_secret=config["client_SECRET"],
+                                                redirect_uri=config["redirect_url"],
+                                                scope=scope,
+                                                open_browser=True
+                                                ))
+    time.sleep(10)
+    track_info = sp.current_user_playing_track()
+    obsify_print(colors.green + "Logged in successfully")
+except:
+    obsify_print(colors.red + "An error has occurred while logging in")
 
 current_song_id = None
 while True:
-    track_info = sp.current_user_playing_track()
+    try:
+        track_info = sp.current_user_playing_track()
+    except:
+        obsify_print(colors.red + "An error has occurred while getting information about currently playing song")
 
     song_name = track_info["item"]["name"]
     song_id = track_info["item"]["id"]
@@ -42,7 +70,7 @@ while True:
         artist_list = ", ".join(artist_list)
 
         now_playing = f"Now playing: \"{song_name}\" by {artist_list}"
-        print(now_playing)
+        obsify_print(now_playing)
 
         data = {
             "song_name" : f"{song_name}",
