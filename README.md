@@ -8,7 +8,7 @@ OBSify is a Script that checks which song is being played in your Spotify Client
 2. Create an App
 3. Open the App's Dashboard
 4. Click **Edit Settings**
-5. In **Redirect URLs** write http://localhost:9000
+5. In **Redirect URLs** write **"http://localhost:9000"**
 6. Copy **Redirect URL**, **Client ID** and **Client Secret**
 7. Paste them into **config.json**
 8. Open **start.bat**
