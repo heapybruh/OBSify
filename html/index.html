@@ -9,7 +9,7 @@
         <div id="now_playing">
           Welcome to OBSify!
         </div>
-        <p class="p-wrapper">
+        <p class="p-wrapper" id="p-wrapper">
           <img class="song_image" id="song_image" width="120px">
           <span id="song_name" style="font-size: 64px">
             Loading...
@@ -21,57 +21,6 @@
         </p>
     </div>
 
-    <script>
-    var song_id = null
-    var now_playing = null
-
-    fetch("widget_config.json").then(response => response.json()).then(data => {
-      if (data.LightMode.toLowerCase() == "true") {
-        $(".background").css("background-color", "white");
-        $(".background").css("color", "rgb(35, 35, 35)");
-      }
-    })
-
-    function loop() {
-      setTimeout(function() {
-      fetch("now_playing.json").then(response => response.json()).then(data => {
-        if (now_playing == null) {
-          now_playing = "not null anymore lol"
-
-          $("#now_playing").fadeOut(500)
-          
-          setTimeout(function() {
-            document.getElementById("now_playing").innerHTML = "Now playing"
-          }, 1000)
-
-          $("#now_playing").delay(1000).fadeIn()
-        }
-
-        if (song_id !== data.song_id) {
-          song_id = data.song_id
-
-          $("#song_image").fadeOut(500)
-          $("#song_name").fadeOut(500)
-          $("#artist_list").fadeOut(500)
-
-          setTimeout(function() {
-            document.getElementById("song_image").src =  data.song_image
-            document.getElementById("song_image").style.marginTop =  "10px"
-            document.getElementById("song_image").style.marginRight =  "20px"
-            document.getElementById("song_name").innerHTML =  data.song_name
-            document.getElementById("artist_list").innerHTML = "by " + data.artist_list
-          }, 1000)
-
-          $("#song_image").delay(1000).fadeIn()
-          $("#song_name").delay(1000).fadeIn()
-          $("#artist_list").delay(1000).fadeIn()
-        }
-      })
-
-      loop()
-    }, 1000)}
-
-    loop()
-    </script>
+    <script src="script.js"></script>
   </body>
 </html>

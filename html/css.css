@@ -9,6 +9,23 @@ body {
   font-weight: bold;
   font-size: 32px;
   text-align: left;
+  animation: fadein ease 1s;
+
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+@keyframes fadein {
+  0% {
+      opacity: 0;
+  }
+  25% {
+      opacity: 0;
+  }
+  100% {
+      opacity: 1;
+   }
 }
 
 .background {

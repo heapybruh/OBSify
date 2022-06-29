@@ -1,13 +1,21 @@
+
 import spotipy
 from spotipy.oauth2 import SpotifyOAuth
 
 from pathlib import Path
 from getpass import getpass
 
+import sys
 import os
 import time
 import json
 import cursor
+
+class NoError:
+    def write(self, msg):
+        pass
+
+sys.stderr = NoError()
 
 clear = lambda: os.system("cls")
 clear()
@@ -22,11 +30,11 @@ class colors:
 def obsify_print(message):
     print(f"[ OBSify ] {message}" + colors.reset)
 
-obsify_print("Loading config.json...")
+obsify_print("Loading config...")
 try:
     config_json = open("config.json", "r", encoding="utf-8")
     config = json.loads(config_json.read())
-    obsify_print(colors.green + "Loaded config.json successfully")
+    obsify_print(colors.green + "Loaded config successfully")
 except:
     obsify_print(colors.red + "An error has occurred while loading config.json")
 
@@ -44,7 +52,6 @@ try:
                                                 scope=scope,
                                                 open_browser=True
                                                 ))
-    time.sleep(10)
     track_info = sp.current_user_playing_track()
     obsify_print(colors.green + "Logged in successfully")
 except:
@@ -55,11 +62,11 @@ while True:
     try:
         track_info = sp.current_user_playing_track()
     except:
-        obsify_print(colors.red + "An error has occurred while getting information about currently playing song")
+        obsify_print(colors.red + "Couldn't get information about currently playing song")
 
     song_name = track_info["item"]["name"]
     song_id = track_info["item"]["id"]
-    song_image = track_info["item"]["album"]["images"][0]["url"]
+    song_image = track_info["item"]["album"]["images"][1]["url"]
     artists = track_info["item"]["artists"]
 
     if current_song_id != song_id:
