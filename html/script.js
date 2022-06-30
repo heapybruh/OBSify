@@ -7,9 +7,19 @@ fetch("widget_config.json").then(response => response.json()).then(data => {
     $(".background").css("color", "rgb(35, 35, 35)");
   }
 
+  if (data.Position.toLowerCase() == "leftcenter") {
+    $("body").css("align-items", "center");
+    $("body").css("justify-content", "flex-start");
+  }
+
   if (data.Position.toLowerCase() == "leftdown") {
     $("body").css("align-items", "flex-end");
     $("body").css("justify-content", "flex-start");
+  }
+
+  if (data.Position.toLowerCase() == "centerup") {
+    $("body").css("align-items", "flex-start");
+    $("body").css("justify-content", "center");
   }
 
   if (data.Position.toLowerCase() == "center") {
@@ -17,8 +27,18 @@ fetch("widget_config.json").then(response => response.json()).then(data => {
     $("body").css("justify-content", "center");
   }
 
+  if (data.Position.toLowerCase() == "centerdown") {
+    $("body").css("align-items", "flex-end");
+    $("body").css("justify-content", "center");
+  }
+
   if (data.Position.toLowerCase() == "rightup") {
     $("body").css("align-items", "flex-start");
+    $("body").css("justify-content", "flex-end");
+  }
+
+  if (data.Position.toLowerCase() == "rightcenter") {
+    $("body").css("align-items", "center");
     $("body").css("justify-content", "flex-end");
   }
 
