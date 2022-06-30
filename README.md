@@ -20,7 +20,7 @@ OBSify is a Script that checks which song is being played in your Spotify Client
 
 ## Optional settings
 - Enable **Shutdown source when not visible** and **Refresh browser when scene becomes active** in **Properties** of a **Browser Source**
-- You can change position of the widget by setting **Position** option (in [widget_config.json](https://github.com/Heapy1337/OBSify/blob/main/html/widget_config.json) ) to :
+- You can change position of the widget by setting **Position** option (in [widget_config.json](https://github.com/Heapy1337/OBSify/blob/main/html/widget_config.json)) to :
   - LEFT (leftup, leftcenter, leftdown)
   - CENTER (centerup, center, centerdown)
   - RIGHT (rightup, rightcenter, rightdown)
