@@ -1,3 +1,12 @@
-test.txt
-.cache
-*.json
+*
+
+!html/css.css
+!html/index.html
+!html/script.js
+!html/widget_config.json
+
+!install_requirements.bat
+!obsify.py
+!README.md
+!requirements.txt
+!start.bat

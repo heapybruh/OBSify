@@ -10,22 +10,23 @@ import os
 import time
 import json
 import cursor
+import colorama
 
 class NoError:
     def write(self, msg):
         pass
 
 sys.stderr = NoError()
+colorama.init(autoreset=True, strip=True, convert=True)
 
 clear = lambda: os.system("cls")
 clear()
 
 cursor.hide()
-
 class colors:
-    green = '\033[92m'
-    red = '\033[91m'
-    reset = '\033[0m'
+    green = colorama.Fore.GREEN
+    red = colorama.Fore.RED
+    reset = colorama.Fore.RESET
 
 def obsify_print(message):
     print(f"[ OBSify ] {message}" + colors.reset)
