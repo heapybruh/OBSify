@@ -19,8 +19,7 @@ class NoError:
 sys.stderr = NoError()
 colorama.init(autoreset=True, strip=True, convert=True)
 
-clear = lambda: os.system("cls")
-clear()
+os.system("cls")
 
 cursor.hide()
 class colors:
