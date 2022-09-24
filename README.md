@@ -1,7 +1,7 @@
-# OBSify - Spotify Widget for OBS written in HTML and Python
+# OBSify - Spotify Widget for OBS written in HTML, JavaScript & Python
 
 ## Introducing OBSify
-OBSify is a Script that checks which song is being played in your Spotify Client and creates a Spotify Widget inside a .html file by using HTML & Python!  
+OBSify is a script that checks which song is being played in your Spotify Client and creates a Spotify Widget inside a .html file!  
 
 ## Requirements
 - Python 3.X
