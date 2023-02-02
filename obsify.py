@@ -10,8 +10,12 @@ import colorama
 colorama.init(autoreset=True, strip=True, convert=True)
 
 os.system("cls")
-os.remove(".cache")
-os.remove(".cache-user-read-currently-playing")
+
+try:    os.remove(".cache")
+except: pass
+
+try:    os.remove(".cache-user-read-currently-playing")
+except: pass
 
 cursor.hide()
 class colors:
