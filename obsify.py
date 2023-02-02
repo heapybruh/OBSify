@@ -1,25 +1,17 @@
-
 import spotipy
 from spotipy.oauth2 import SpotifyOAuth
-
 from pathlib import Path
-from getpass import getpass
-
-import sys
 import os
 import time
 import json
 import cursor
 import colorama
 
-class NoError:
-    def write(self, msg):
-        pass
-
-sys.stderr = NoError()
 colorama.init(autoreset=True, strip=True, convert=True)
 
 os.system("cls")
+os.remove(".cache")
+os.remove(".cache-user-read-currently-playing")
 
 cursor.hide()
 class colors:
@@ -31,6 +23,7 @@ def obsify_print(message):
     print(f"[ OBSify ] {message}" + colors.reset)
 
 obsify_print("Loading config...")
+
 try:
     config_json = open("config.json", "r", encoding="utf-8")
     config = json.loads(config_json.read())
@@ -52,9 +45,8 @@ try:
                                                 scope=scope,
                                                 open_browser=True
                                                 ))
-    track_info = sp.current_user_playing_track()
     obsify_print(colors.green + "Logged in successfully")
-except:
+except Exception as e:
     obsify_print(colors.red + "An error has occurred while logging in")
 
 current_song_id = None
@@ -63,6 +55,8 @@ while True:
         track_info = sp.current_user_playing_track()
     except:
         obsify_print(colors.red + "Couldn't get information about currently playing song")
+        time.sleep(1)
+        continue
 
     song_name = track_info["item"]["name"]
     song_id = track_info["item"]["id"]
