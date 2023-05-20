@@ -1,86 +1,90 @@
 var song_id = null;
-var now_playing = null;
 
-fetch("widget_config.json").then(response => response.json()).then(data => {
-  if (data.LightMode.toLowerCase() == "true") {
-    $(".background").css("background-color", "white");
-    $(".background").css("color", "rgb(35, 35, 35)");
-  };
+$.ajax({
+  url: 'http://127.0.0.1:7777/config',
+  type: 'GET',
+  success: function(data) {
+    switch(data.widget.position) {
+      case "leftcenter":
+        $("body").css("align-items", "center");
+        $("body").css("justify-content", "flex-start");
+        break;
 
-  if (data.Position.toLowerCase() == "leftcenter") {
-    $("body").css("align-items", "center");
-    $("body").css("justify-content", "flex-start");
-  };
+      case "leftdown":
+      $("body").css("align-items", "flex-end");
+      $("body").css("justify-content", "flex-start");
+      break;     
 
-  if (data.Position.toLowerCase() == "leftdown") {
-    $("body").css("align-items", "flex-end");
-    $("body").css("justify-content", "flex-start");
-  };
+      case "centerup":
+        $("body").css("align-items", "flex-start");
+        $("body").css("justify-content", "center");
+        break;
+  
+      case "center":
+        $("body").css("align-items", "center");
+        $("body").css("justify-content", "center");
+        break;
+    
+      case "centerdown":
+        $("body").css("align-items", "flex-end");
+        $("body").css("justify-content", "center");
+        break;
+      
+      case "rightup":
+        $("body").css("align-items", "flex-start");
+        $("body").css("justify-content", "flex-end");
+        break;
+      
+      case "rightcenter":
+        $("body").css("align-items", "center");
+        $("body").css("justify-content", "flex-end");
+        break;
 
-  if (data.Position.toLowerCase() == "centerup") {
-    $("body").css("align-items", "flex-start");
-    $("body").css("justify-content", "center");
-  };
-
-  if (data.Position.toLowerCase() == "center") {
-    $("body").css("align-items", "center");
-    $("body").css("justify-content", "center");
-  };
-
-  if (data.Position.toLowerCase() == "centerdown") {
-    $("body").css("align-items", "flex-end");
-    $("body").css("justify-content", "center");
-  };
-
-  if (data.Position.toLowerCase() == "rightup") {
-    $("body").css("align-items", "flex-start");
-    $("body").css("justify-content", "flex-end");
-  };
-
-  if (data.Position.toLowerCase() == "rightcenter") {
-    $("body").css("align-items", "center");
-    $("body").css("justify-content", "flex-end");
-  };
-
-  if (data.Position.toLowerCase() == "rightdown") {
-    $("body").css("align-items", "flex-end");
-    $("body").css("justify-content", "flex-end");
-  };
+      case "rightdown":
+        $("body").css("align-items", "flex-end");
+        $("body").css("justify-content", "flex-end");
+        break;
+    };
+  }
 });
 
 function loop() {
   setTimeout(function() {
-  fetch("now_playing.json").then(response => response.json()).then(data => {
-    if (now_playing == null) {
-      now_playing = "not null anymore lol";
+    $.ajax({
+      url: 'http://127.0.0.1:7777/spotify',
+      type: 'GET',
+      success: function(data) {
+        if (song_id !== data.id) {
+          song_id = data.id;
 
-      $("#now_playing").fadeOut(500);
-      
-      setTimeout(function() {
-        $("#now_playing").html("Now playing");
-      }, 500);
+          $(".background").fadeOut(500);
 
-      $("#now_playing").delay(500).fadeIn();
-    };
+          setTimeout(function() {
+            $(".image").css("background-image", "url(" + data.image_url + ")");
+            $("#title").html(data.title);
+            $("#title").removeClass("animate");
+            $("#artists").html(data.artists.join(", "));
+            $("#artists").removeClass("animate");
+          }, 500);
 
-    if (song_id !== data.song_id) {
-      song_id = data.song_id;
+          $(".background").delay(500).fadeIn();
 
-      $("#p-wrapper").fadeOut(500);
+          animate()
+        };
+      }});
 
-      setTimeout(function() {
-        $("#song_image").attr("src", data.song_image);
-        $("#song_image").css("margin-top", "10px");
-        $("#song_image").css("margin-right", "20px");
-        $("#song_name").html(data.song_name);
-        $("#artist_list").html("by " + data.artist_list);
-      }, 500);
-
-      $("#p-wrapper").delay(500).fadeIn();
-    };
-  });
-
-  loop();
-}, 1000)};
+    loop();
+  }, 2000)};
 
 loop();
+
+function animate() {
+  setTimeout(function() {
+      if (($("#title-div").width() + 20) < $("#title").width()) {
+        $("#title").addClass("animate");
+      }
+
+      if (($("#artists-div").width() + 20) < $("#artists").width()) {
+        $("#artists").addClass("animate");
+      }
+  }, 2000)};
