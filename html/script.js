@@ -11,30 +11,30 @@ $.ajax({
         break;
 
       case "leftdown":
-      $("body").css("align-items", "flex-end");
-      $("body").css("justify-content", "flex-start");
-      break;     
+        $("body").css("align-items", "flex-end");
+        $("body").css("justify-content", "flex-start");
+        break;
 
       case "centerup":
         $("body").css("align-items", "flex-start");
         $("body").css("justify-content", "center");
         break;
-  
+
       case "center":
         $("body").css("align-items", "center");
         $("body").css("justify-content", "center");
         break;
-    
+
       case "centerdown":
         $("body").css("align-items", "flex-end");
         $("body").css("justify-content", "center");
         break;
-      
+
       case "rightup":
         $("body").css("align-items", "flex-start");
         $("body").css("justify-content", "flex-end");
         break;
-      
+
       case "rightcenter":
         $("body").css("align-items", "center");
         $("body").css("justify-content", "flex-end");
@@ -44,7 +44,7 @@ $.ajax({
         $("body").css("align-items", "flex-end");
         $("body").css("justify-content", "flex-end");
         break;
-    };
+    }
   }
 });
 
@@ -69,22 +69,25 @@ function loop() {
 
           $(".background").delay(500).fadeIn();
 
-          animate()
-        };
-      }});
+          animate();
+        }
+      }
+    });
 
     loop();
-  }, 2000)};
+  }, 2000);
+}
 
 loop();
 
 function animate() {
   setTimeout(function() {
-      if (($("#title-div").width() + 20) < $("#title").width()) {
-        $("#title").addClass("animate");
-      }
+    if (($("#title-div").width() + 20) < $("#title").width()) {
+      $("#title").addClass("animate");
+    }
 
-      if (($("#artists-div").width() + 20) < $("#artists").width()) {
-        $("#artists").addClass("animate");
-      }
-  }, 2000)};
+    if (($("#artists-div").width() + 20) < $("#artists").width()) {
+      $("#artists").addClass("animate");
+    }
+  }, 2000);
+}
