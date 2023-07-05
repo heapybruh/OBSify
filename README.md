@@ -1,6 +1,6 @@
 <div align="center">
  <h1>OBSify</h1>
- <p>Spotify widget for OBS written in HTML, JavaScript and Python</p>
+ <p>Spotify Widget for OBS written in HTML, JavaScript and Python</p>
 </div>
 
 ## Requirements
