@@ -20,15 +20,15 @@
 2. Create an App
 3. Go to App's dashboard and edit its settings
 4. Set **"Redirect URLs"** to `http://localhost:9000`
-5. Copy **"Redirect URLs"**, **"Client ID"**, **"Client secret"** and paste them into [config.json](./config.json)
-6. Install Python modules by using `pip install -r requirements.txt --user`
-7. Start **main.py** by using `python main.py`
-8. A website should open with the Spotify authorization, accept it
-9. Open OBS Studio
-10. Add **"Browser"** source to the scene and open its properties
-11. Check **"Local file"** option
-12. Click **"Browse"** and use [index.html](./html/index.html) which is in **"html"** folder
-13. Done!
+5. Create a config file using [config.json.example](./config.json.example) and name it **config.json**
+6. Copy **"Redirect URLs"**, **"Client ID"**, **"Client secret"** and paste them into your config file
+7. Install Python modules by using `pip install -r requirements.txt --user`
+8. Start **main.py** by using `python main.py`
+9. A website should open with the Spotify authorization, accept it
+10. Open OBS Studio
+11. Add **"Browser"** source to the scene and open its properties
+12. Check **"Local file"** option
+13. Click **"Browse"** and use [index.html](./html/index.html) which is in **"html"** folder
 
 ## Optional settings
 - Enable **"Shutdown source when not visible"** and **"Refresh browser when scene becomes active"** in source's properties

@@ -162,4 +162,4 @@ cython_debug/
 .vscode
 .cache
 .cache-user-read-currently-playing
-test.txt
+config.json
