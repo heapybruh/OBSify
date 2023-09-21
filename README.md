@@ -21,7 +21,7 @@
 3. Go to App's dashboard and edit its settings
 4. Set **"Redirect URLs"** to `http://localhost:9000`
 5. Copy **"Redirect URLs"**, **"Client ID"**, **"Client secret"** and paste them into [config.json](./config.json)
-6. Install Python modules by using `pip install -r requirements.txt`
+6. Install Python modules by using `pip install -r requirements.txt --user`
 7. Start **main.py** by using `python main.py`
 8. A website should open with the Spotify authorization, accept it
 9. Open OBS Studio
